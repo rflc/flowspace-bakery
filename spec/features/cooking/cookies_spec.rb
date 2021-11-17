@@ -13,7 +13,6 @@ feature 'Cooking cookies' do
     click_button 'Mix and bake'
 
     expect(current_path).to eq(oven_path(oven))
-    page.find('form.button_to') # Timming issue, Capybara doesnt seem to wait long enough
     expect(page).to have_content 'Chocolate Chip'
     expect(page).to have_content 'Your Cookie is Ready'
 
