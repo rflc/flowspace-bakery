@@ -1,7 +1,10 @@
 class BakeJob < ApplicationJob
-    queue_as :default
-    def perform(id)
-      sleep 120
-      Cookie.where(id: id).update(cooked: true)
-    end
+  queue_as :default
+    
+  def perform(cookie)
+    sleep 5#120
+    cookie.update(cooked: true)
+    UpdateController.new.update_view(cookie)
+    puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  end
 end

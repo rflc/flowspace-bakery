@@ -1,14 +1,16 @@
 %h3= @oven.name
 
 .cookie-info
-  Cookie in oven:
+  %div.cookie-update
+    Cookie in oven:
+    - if @oven.cookie
+      1 cookie with #{@oven.cookie.fillings.present? ? @oven.cookie.fillings : "no fillings"}
+      - if @oven.cookie.cooked
+        (Your Cookie is Ready) 
+    - else
+      None
   - if @oven.cookie
-    1 cookie with #{@oven.cookie.fillings.present? ? @oven.cookie.fillings : "no fillings"}
-    - if @oven.cookie.ready?
-      (Your Cookie is Ready) 
-      = button_to "Retrieve Cookie", empty_oven_path, class: 'button tiny'
-  - else
-    None
+    = button_to "Retrieve Cookie", empty_oven_path, class: 'button tiny'
 
 %br
 
