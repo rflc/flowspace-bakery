@@ -1,7 +1,7 @@
 class UpdateController < AbstractController::Base
   
   include AbstractController::Rendering
-#  include AbstractController::Layouts
+  include AbstractController::Layouts
   include AbstractController::Helpers
   include AbstractController::Translation
   include AbstractController::AssetPaths
@@ -10,9 +10,10 @@ class UpdateController < AbstractController::Base
   self.view_paths = "app/views"
 
   def update_view(cookie)
-    puts "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZzz"
-    baked_cookies = ApplicationControlle.render.(:partial =>  "ovens/cookie_update", :locals => {cookie: cookie})
-    ActionCable.server.broadcast "oven_#{cookie.storage_id}", {cookie_update: baked_cookies}
+    @cookie = cookie
+#    baked_cookies = render(:partial => "ovens/cookie_update", :locals => {cookie: @cookie})
+    ActionCable.server.broadcast "oven_1", {cookie_update: "baked_cookies"}
+#    ActionCable.server.broadcast "oven_#{$oven.id}", {cookie_update: "Test"}
   end
 end
 

@@ -1,6 +1,6 @@
 class OvenChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "oven_#{$oven.id}" #{params['oven_id']}"
+    stream_from 'oven_1'
   end
 
   def unsubscribed

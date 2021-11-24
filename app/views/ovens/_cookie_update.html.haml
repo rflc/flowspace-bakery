@@ -1,8 +1,9 @@
-  %div.cookie-update
+  .cookie-update
     Cookie in oven:
-    - if @cookie
-      1 cookie with #{@cookie.fillings.present? @cookie.fillings : "no fillings"}
-      - if @cookie.cooked
+    - cookie = local_assigns[:cookie]
+    - if cookie
+      1 cookie with #{cookie.fillings.present? ? cookie.fillings : "no fillings"}
+      - if cookie.cooked
         (Your Cookie is Ready)
     - else
       None

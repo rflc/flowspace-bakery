@@ -1,7 +1,7 @@
 %h3= @oven.name
 
 .cookie-info
-  %div.cookie-update
+  .cookie-update
     Cookie in oven:
     - if @oven.cookie
       1 cookie with #{@oven.cookie.fillings.present? ? @oven.cookie.fillings : "no fillings"}
