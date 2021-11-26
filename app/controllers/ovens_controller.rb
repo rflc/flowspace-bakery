@@ -7,7 +7,6 @@ class OvensController < ApplicationController
 
   def show
     @oven = current_user.ovens.find_by!(id: params[:id])
-    $oven = @oven # I know globals are bad
   end
 
   def empty

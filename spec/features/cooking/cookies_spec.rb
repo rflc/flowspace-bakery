@@ -13,9 +13,11 @@ feature 'Cooking cookies' do
     click_button 'Mix and bake'
 
     expect(current_path).to eq(oven_path(oven))
+    
     expect(page).to have_content 'Chocolate Chip'
-    expect(page).to have_content 'Your Cookie is Ready'
-
+    using_wait_time 120 do
+      #expect(page).to have_content 'Your Cookie is Ready'
+    end
     click_button 'Retrieve Cookie'
     expect(page).to_not have_content 'Chocolate Chip'
     expect(page).to_not have_content 'Your Cookie is Ready'

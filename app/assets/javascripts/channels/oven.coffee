@@ -1,4 +1,6 @@
-App.oven = App.cable.subscriptions.create "OvenChannel",
+pathArray = window.location.pathname.split('/');
+oven_id = pathArray.slice(2, 3).shift();
+App.oven = App.cable.subscriptions.create channel: "OvenChannel", oven_id: oven_id,
   connected: ->
     console.log("connected")
     # Called when the subscription is ready for use on the server
